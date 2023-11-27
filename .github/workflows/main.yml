@@ -14,15 +14,15 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       
-    - name: Switch directory
-      working-directory: terraform_files/managed_groups
-      run: ls
-
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
     - name: Terraform Init
       run: terraform init
+    
+    - name: Switch directory
+      working-directory: terraform_files/managed_groups
+      run: ls
 
     - name: Terraform Plan
       run: terraform plan
