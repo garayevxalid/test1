@@ -19,14 +19,14 @@ jobs:
 
     - name: Terraform init # Switch directory
       # working-directory: terraform_files/managed_groups
-      run: terraform init
+      run: cd terraform_files/managed_groups && terraform init
     
     # - name: Switch directory
     #   run: cd terraform_files/managed_groups
 
     - name: Terraform Plan
       # if: [ -f terraform_files/managed_groups/main.tf]; then
-      run: cd terraform_files/managed_groups && terraform plan
+      run: terraform plan
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
