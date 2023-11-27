@@ -23,8 +23,10 @@ jobs:
     
     - name: Switch directory
       run: cd terraform_files/managed_groups
+           ls -l
 
     - name: Terraform Plan
+      # if: [ -f terraform_files/managed_groups/main.tf]; then
       run: terraform plan
 
     - name: Terraform Apply
