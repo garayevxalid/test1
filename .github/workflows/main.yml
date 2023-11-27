@@ -16,6 +16,7 @@ jobs:
       
     - name: Switch directory
       working-directory: ./terraform_files\managed_groups
+      run: ls
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
