@@ -14,18 +14,19 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       
-    - name: Switch directory
-      working-directory: ./terraform_files\managed_groups
-      run: ls
-
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    - name: Terraform Init
+    - name: Terraform init # Switch directory
+      # working-directory: terraform_files/managed_groups
       run: terraform init
+    
+    # - name: Switch directory
+    #   run: cd terraform_files/managed_groups
 
     - name: Terraform Plan
-      run: terraform plan
+      # if: [ -f terraform_files/managed_groups/main.tf]; then
+      run: cd terraform_files/managed_groups && terraform plan
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
