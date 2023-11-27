@@ -26,10 +26,10 @@ jobs:
 
     - name: Terraform Plan
       # if: [ -f terraform_files/managed_groups/main.tf]; then
-      run: terraform plan
+      run: cd terraform_files/managed_group && terraform plan
 
     - name: Terraform Apply
-      run: terraform apply -auto-approve
+      run: cd terraform_files/managed_group && terraform apply -auto-approve
 
     
     
