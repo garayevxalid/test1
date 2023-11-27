@@ -4,13 +4,31 @@ on:
  push:
    branches: 
      - main
-environment:
-  project_name: 
+
 
 
 jobs:
-  Terraform_install:
+  Terraform_install_and_apply:
     runs-on: alpine:latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Switch directory
+      working-directory: ./terraform_files\managed_groups
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Plan
+      run: terraform plan
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
     
     
    
