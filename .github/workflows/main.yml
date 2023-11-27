@@ -17,9 +17,12 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    - name: Switch directory
-      working-directory: terraform_files/managed_groups
+    - name: Terraform init # Switch directory
+      # working-directory: terraform_files/managed_groups
       run: terraform init
+    
+    - name: Switch directory
+      run: cd terraform_files/managed_groups
 
     - name: Terraform Plan
       run: terraform plan
