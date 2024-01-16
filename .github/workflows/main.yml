@@ -3,6 +3,7 @@ name: sample action
 on:
  workflow_dispatch:
   inputs:
+   yazmaq:
     description: 'type anything'
     required: false
     default: 'yaz1'
@@ -17,4 +18,5 @@ jobs:
    environment: host_name
    steps:
     - name: provide information from options
-      uses: actions/checkout@v3.1.0
+      run: | 
+       echo "${{inputs.yazmaq}}
