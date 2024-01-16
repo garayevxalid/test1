@@ -1,37 +1,21 @@
-name: TEST1
+name: sample action
 
-on: 
- push:
-   branches: 
-     - main
-
-
+on:
+ workflow_dispatch:
+  inputs:
+    description: 'type anything'
+    required: false
+    default: 'yaz1'
+    type: Choise
+    options: 
+     - yaz1
+     - yaz2
 
 jobs:
-  Terraform_install_and_apply:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-
-    - name: Terraform init # Switch directory
-      # working-directory: terraform_files/managed_groups
-      run: cd terraform_files/managed_groups && terraform init
-    
-    # - name: Switch directory
-    #   run: cd terraform_files/managed_groups
-
-    - name: Terraform Plan
-      # if: [ -f terraform_files/managed_groups/main.tf]; then
-      run: cd terraform_files/managed_groups && terraform plan
-
-    - name: Terraform Apply
-      run: cd terraform_files/managed_groups && terraform apply -auto-approve
-
-    
-    
-   
- 
+  job1:
+   runs-on: ubuntu-latest
+   environment: host_name
+   steps:
+    - name: provide information from options
+      uses: actions/checkout@v3.1.0
+      output: @{{github.input}}
