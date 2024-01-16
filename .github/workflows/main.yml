@@ -17,4 +17,4 @@ jobs:
    environment: host_name
    steps:
     - name: provide information from options
-      uses: actions/checkout@v3.1.
+      uses: actions/checkout@v3.1.0
